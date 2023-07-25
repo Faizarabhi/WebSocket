@@ -18,7 +18,10 @@ btn.addEventListener('click',function(){
 })
 
 message.addEventListener('keypress',function(){
-    socket.emit('typing')
+    socket.emit('typing',handle.value)
+})
+socket.on('typing',function(data){
+    feedback.innerHTML = '<p><em>'+data+' is typing a message...</em></p>'
 })
 // listen for events
 socket.on('chat',function(data){
